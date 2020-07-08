@@ -10,19 +10,18 @@ body{
 
 #wrapper{
     width: 100%;
-    height: 200px;
+    height: auto;
 }
 
 #content{
     height: 90%;
     padding: 10px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-#table {
+#tableDiv {
     margin: 10px;
     padding: 5px;
     width: 100%;
@@ -38,10 +37,9 @@ body{
 #testButton{
     margin: 10px;
     width: 200px;
-    height: 100px;
+    height: 50px;
     color: rgb(214, 230, 230);
     background-color: rgb(16, 34, 34);
-    border: 2px solid rgb(214, 230, 230);
     border-radius: 5px;
 }
 
