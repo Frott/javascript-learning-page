@@ -44,6 +44,8 @@ function mainFunc() {
                 let newText = document.createElement("span");
                 let newDeleteButton = document.createElement("input");
                 let newColorChange = document.createElement("input");
+                let newUpArrow = document.createElement("input");
+                let newDownArrow = document.createElement("input");
                 newDeleteButton.type = 'image';
                 newDeleteButton.src = 'content\\delete.png'
                 newDeleteButton.className = "delButton"
@@ -54,9 +56,17 @@ function mainFunc() {
                 newText.innerHTML = " " + todoTask.value + " "
                 newColorChange.className = 'colButton';
                 newColorChange.type = 'image';
-                newColorChange.src = 'content\\colorpick.png'
+                newColorChange.src = 'content\\colorpick.png';
+                newUpArrow.className = 'upButton';
+                newUpArrow.type = 'image';
+                newUpArrow.src = 'content\\arrowup.png'
+                newDownArrow.className = 'downButton';
+                newDownArrow.type = 'image';
+                newDownArrow.src = 'content\\arrowdown.png' ;
                 newCell.appendChild(newCheckbox);
                 newCell.appendChild(newText);
+                newCell.appendChild(newUpArrow);
+                newCell.appendChild(newDownArrow)
                 newCell.appendChild(newColorChange);
                 newCell.appendChild(newDeleteButton);
                 todoTask.value = null;
@@ -70,6 +80,19 @@ function mainFunc() {
                     tasksDone++;
                     counter.rows[1].cells[0].innerHTML = tasksDone;
                     todoTable.rows[todoTable.rows.length-1].after(event.target.parentElement.parentElement);
+                });
+                newUpArrow.addEventListener("click", function(event){
+                    if(event.target.parentElement.parentElement.rowIndex !== 0 && event.target.parentElement.children[0].disabled == false){
+                        event.target.parentElement.parentElement.previousSibling.before(event.target.parentElement.parentElement);
+                    }
+                });
+                newDownArrow.addEventListener("click", function(event){
+                    if(event.target.parentElement.children[0].disabled === false &&
+                        todoTable.rows[event.target.parentElement.parentElement.rowIndex + 1] !== 'undefined' &&
+                        todoTable.rows[event.target.parentElement.parentElement.rowIndex + 1].children[0].children[0].disabled !== true){
+                            event.target.parentElement.parentElement.parentElement.insertBefore(todoTable.rows[event.target.parentElement.parentElement.rowIndex + 1], 
+                            todoTable.rows[event.target.parentElement.parentElement.rowIndex])
+                    }
                 });
                 newDeleteButton.addEventListener("click", function(event){
                     todoTable.deleteRow(event.target.parentElement.parentElement.rowIndex);

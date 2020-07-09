@@ -105,6 +105,20 @@ td{
     margin-right: 15px;
 }
 
+.upButton{
+    justify-content: center;
+    height: 15px;
+    width: 15px;
+    margin-right: 15px;
+}
+
+.downButton{
+    justify-content: center;
+    height: 15px;
+    width: 15px;
+    margin-right: 15px;
+}
+
 #colorpicker{
     position: fixed;
     border: 3px dotted black;
