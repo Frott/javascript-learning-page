@@ -34,6 +34,12 @@ body{
     border: 2px dotted darkslategrey;
 }
 
+#inputs{
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
 #testButton{
     margin: 10px;
     width: 200px;
@@ -41,6 +47,14 @@ body{
     color: rgb(214, 230, 230);
     background-color: rgb(16, 34, 34);
     border-radius: 5px;
+    display: inline-block;
+}
+
+#todoTask{
+    margin: 10px;
+    height: 20px;
+    width: 200px;
+    display: inline-block;
 }
 
 td{
