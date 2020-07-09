@@ -34,10 +34,12 @@ body{
     border: 2px dotted darkslategrey;
 }
 
-#inputs{
+#io{
     width: auto;
     margin: 0 auto;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #testButton{
@@ -66,4 +68,16 @@ td{
     padding: 5px;
 }
 
+#table{
+    width: 100%;
+}
 
+.delButton{
+    position: absolute;
+    left: 92.5%;
+}
+
+.counterbg{
+    border: 1px solid black;
+    background-color: darkcyan;
+}
