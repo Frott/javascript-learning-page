@@ -1,4 +1,5 @@
 window.onload = mainFunc;
+
 function mainFunc() {
     let todoTask = document.getElementById("todoTask");
     let todoTable = document.getElementById("table");
@@ -6,6 +7,23 @@ function mainFunc() {
     let tasksLeft = 0;
     let tasksDone = 0;
     let firstCompleted = -1;
+    let colorpicker = document.getElementById("colorpicker");
+    let selectedRow;
+    colorpicker.children[0].addEventListener("click", function(clickEvent){
+        //console.log(event);
+        selectedRow.setAttribute("style", "border-left: 4px solid red;")
+        colorpicker.style.display = "none";
+    });
+    colorpicker.children[1].addEventListener("click", function(clickEvent){
+        //console.log(event);
+        selectedRow.setAttribute("style", "border-left: 4px solid darkgreen;")
+        colorpicker.style.display = "none";
+    });
+    colorpicker.children[2].addEventListener("click", function(clickEvent){
+        //console.log(event);
+        selectedRow.setAttribute("style", "border-left: 4px solid white;")
+        colorpicker.style.display = "none";
+    });
     addTask();
     function addTask(){
         document.getElementById("testButton").addEventListener("click", function(){
@@ -23,14 +41,23 @@ function mainFunc() {
                 let newLine = todoTable.insertRow(firstCompleted);
                 let newCell = newLine.insertCell(0);
                 let newCheckbox = document.createElement("input");
-                let newText = document.createTextNode(" " + todoTask.value + " ");
-                let newDeleteButton = document.createElement("button");
-                newDeleteButton.textContent = "Delete";
+                let newText = document.createElement("span");
+                let newDeleteButton = document.createElement("input");
+                let newColorChange = document.createElement("input");
+                newDeleteButton.type = 'image';
+                newDeleteButton.src = 'content\\delete.png'
                 newDeleteButton.className = "delButton"
+                newCell.className = "tasks";
                 newCheckbox.type = "checkbox";
                 newCheckbox.className = "checkbox";
+                newText.className = 'newText';
+                newText.innerHTML = " " + todoTask.value + " "
+                newColorChange.className = 'colButton';
+                newColorChange.type = 'image';
+                newColorChange.src = 'content\\colorpick.png'
                 newCell.appendChild(newCheckbox);
                 newCell.appendChild(newText);
+                newCell.appendChild(newColorChange);
                 newCell.appendChild(newDeleteButton);
                 todoTask.value = null;
                 tasksLeft++;
@@ -56,6 +83,10 @@ function mainFunc() {
                         }
                     }
                     //console.log(event);
+                });
+                newColorChange.addEventListener("click", function(event){
+                    colorpicker.style.display = "flex";
+                    selectedRow = event.target.parentElement;
                 });
             }
         });
