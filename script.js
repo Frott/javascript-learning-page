@@ -3,7 +3,7 @@ function clickListener(){
     let todoTask = document.getElementById("todoTask");
     let todoTable = document.getElementById("table");
     document.getElementById("testButton").addEventListener("click", function(){
-        if (todoTask.value == null || todoTask.value == ""){
+        if (todoTask.value == null){
             alert("Cannot add an empty Task!");
         } else {
             let newLine = todoTable.insertRow(-1);
