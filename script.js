@@ -13,8 +13,8 @@ function mainFunc() {
                 alert("Cannot add an empty Task!");
             } else {
                 if (todoTable.rows.length > 0){
-                    for(let i = 0; i <= todoTable.rows.length; i++){
-                        if(todoTable.rows[i].children[0].children[0].disabled){
+                    for(let i = 0; i <= todoTable.rows.length - 1; i++){
+                        if(todoTable.rows[i].children[0].children[0].disabled == true){
                             firstCompleted = i;
                             break;
                         }
@@ -49,10 +49,11 @@ function mainFunc() {
                     if(event.target.parentElement.childNodes[0].disabled == false){
                         tasksLeft--;
                         counter.rows[1].cells[1].innerHTML = tasksLeft;
-                    }
-                    if (tasksDone != 0){
-                        tasksDone--;
-                        counter.rows[1].cells[0].innerHTML = tasksDone;
+                    } else {
+                        if (tasksDone != 0){
+                            tasksDone--;
+                            counter.rows[1].cells[0].innerHTML = tasksDone;
+                        }
                     }
                     //console.log(event);
                 });
